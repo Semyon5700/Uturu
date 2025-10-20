@@ -1,5 +1,5 @@
 ; Uturu OS - 16-bit Operating System
-; Copyright (C) 2024 Semyon5700
+; Copyright (C) 2025 Semyon5700
 ;
 ; This program is free software: you can redistribute it and/or modify
 ; it under the terms of the GNU General Public License as published by
