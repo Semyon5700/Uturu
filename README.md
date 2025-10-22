@@ -1,105 +1,136 @@
-; Uturu OS - 16-bit Operating System
-; Copyright (C) 2025 Semyon5700
-;
-; This program is free software: you can redistribute it and/or modify
-; it under the terms of the GNU General Public License as published by
-; the Free Software Foundation, either version 3 of the License, or
-; (at your option) any later version.
 # Uturu OS
 
-16-bit x86 Operating System
+**A minimalist 16-bit x86 operating system from scratch**
+## 🚀 Overview
 
-## Description
+Uturu OS is a completely from-scratch 16-bit operating system written entirely in x86 assembly language. Born from curiosity and passion for low-level programming, this project demonstrates how operating systems work at the most fundamental level.
 
-Uturu OS is a from-scratch 16-bit operating system written entirely in x86 assembly language. This project represents a complete operating system implementation including custom bootloader, kernel, and basic system utilities.
+> **Educational Focus**: Built for learning and experimentation with real-mode x86 architecture
 
-## Features
+## ✨ Features
 
-- Custom 512-byte bootloader
-- Monolithic kernel architecture
-- Command-line interface
-- Real-time clock support
-- Basic graphics capabilities
-- System utilities and games
+### Core System
+- 🖥️ **Custom Bootloader** - 512-byte master boot record
+- ⚙️ **Monolithic Kernel** - Complete memory management and process control  
+- ⌨️ **Interactive Shell** - Command-line interface with argument parsing
+- 🛡️ **Safe Input Handling** - Protected against buffer overflow attacks
 
-## System Requirements
+### System Utilities
+- 🕐 **Real-time Clock** - Time display and configuration
+- 💾 **Memory Management** - System memory detection and reporting
+- 🎮 **Basic Graphics** - VGA mode demonstrations and games
+- 🔧 **System Control** - Reboot and shutdown capabilities
 
-- x86-compatible processor
-- 1.44MB floppy disk drive
-- Minimum 512KB RAM
+### Fun Extras
+- 🎯 **Minesweeper Game** - Classic puzzle game implementation
+- 🔍 **Easter Eggs** - Hidden features waiting to be discovered!
+- 📟 **Retro Aesthetic** - Authentic 16-bit computing experience
 
-## Building
+## 🎮 Available Commands
 
-### Prerequisites
-- NASM (Netwide Assembler)
-- QEMU (for emulation)
+| Command | Description | Usage |
+|---------|-------------|-------|
+| `ver` | Display OS version | `ver` |
+| `time` | Show current time | `time` |
+| `time update` | Set system time | `time update` |
+| `echo` | Print text to screen | `echo <message>` |
+| `fetch` | System information | `fetch` |
+| `cube` | 3D cube demo | `cube` |
+| `minesweeper` | Play minesweeper | `minesweeper` |
+| `reboot` | Restart system | `reboot` |
+| `shutdown` | Power off | `shutdown` |
+| `kernel` | Kernel information | `kernel` |
+| `author` | Developer credits | `author` |
+| `browser` | Placeholder feature | `browser` |
+| `crash` | Trigger kernel panic | `crash` |
+| `help` | Command reference | `help` |
 
-### Compilation Instructions
+*💡 Hint: Try the `32-bit` command for a special surprise!*
 
-```bash
-# Assemble bootloader
-nasm -f bin bootloader.asm -o bootloader.bin
+## 🛠️ System Requirements
 
-# Assemble kernel  
-nasm -f bin kernel.asm -o kernel.bin
+### Minimum Hardware
+- **Processor**: 8086 compatible CPU or later
+- **Memory**: 512KB RAM minimum
+- **Storage**: 1.44MB floppy disk
+- **Display**: VGA-compatible graphics
 
-# Create disk image
-dd if=/dev/zero of=uturu.img bs=512 count=2880
-dd if=bootloader.bin of=uturu.img conv=notrunc
-dd if=kernel.bin of=uturu.img bs=512 seek=1 conv=notrunc
-```
-
-## Installation
-
-### Floppy Disk
-```bash
-dd if=uturu.img of=/dev/fd0 bs=512 count=2880
-```
-
-### Emulation
-```bash
-qemu-system-i386 -fda uturu.img
-```
-
-## Usage
-
-After boot, the system presents a command-line interface. Available commands include:
-
-- `ver` - Display system version
-- `time` - Show current time
-- `reboot` - Restart system
-- `shutdown` - Power off
-- `help` - Display command list
-
-## Project Structure
+### Emulation (Recommended)
+- **QEMU** x86 system emulator
+- **VirtualBox** with floppy support
+- **Bochs** x86 PC emulator
+## 📁 Project Structure
 
 ```
 uturu-os/
-├── src/
-│   ├── bootloader.asm
-│   └── kernel.asm
-├── docs/
-│   └── technical.md
-├── LICENSE
-└── README.md
+├── boot.asm          # Master boot record (512 bytes)
+├── kernel.asm        # Main kernel implementation  
+├── compile.sh        # Build automation script
+├── run.sh           # QEMU launch script
+├── README.md        # This file
+└── LICENSE          # GPLv3 License
 ```
 
-## Development Status
+## 🎯 Technical Highlights
 
-This project is currently in active development. Version Beta 5 represents a stable release with basic functionality implemented.
+### Boot Process
+1. **BIOS** loads 512-byte bootloader at 0x7C00
+2. **Bootloader** loads kernel from disk sectors 2-41
+3. **Kernel** initializes at 0x7E00 with system setup
+4. **Shell** starts interactive command processing
 
-## License
+### Memory Layout
+- `0x0000-0x7BFF` - BIOS and system data
+- `0x7C00-0x7DFF` - Bootloader (512 bytes)
+- `0x7E00-0xFFFF` - Kernel and system memory
 
-This project is licensed under the GPL-3.0 License - see the LICENSE file for details.
+### Key Features
+- **Real-mode operation** - Direct hardware access
+- **Protected input** - Bounds-checked string handling  
+- **Modular commands** - Easy to extend functionality
+- **BIOS integration** - Leverages firmware services
 
-## Author
+## 🐛 Current Status: Beta 6
 
-- **Semyon5700** - Initial work and maintenance
+**What works:**
+- ✅ Stable boot process
+- ✅ Complete shell environment  
+- ✅ Basic system utilities
+- ✅ Memory detection
+- ✅ Real-time clock
+- ✅ Graphics demonstrations
 
-## Contributing
+**Known limitations:**
+- 🔄 Single-tasking only
+- 📚 Limited application support  
+- 💾 No file system yet
+- 🔒 No memory protection
 
-This is primarily a personal educational project. While contributions are welcome, please note the irregular update schedule.
+## 👨‍💻 Author
 
-## Disclaimer
+**Semyon5700** - Creator and Maintainer
 
-This operating system is intended for educational purposes only. Use on production systems is not recommended.
+> *"This project represents my journey into understanding how computers really work at the lowest level. Every line of assembly taught me something new about the magic happening between hardware and software."*
+
+## 📄 License
+
+This project is licensed under the **GNU General Public License v3.0** - see the [LICENSE](LICENSE) file for details.
+
+**You are free to:**
+- Use, study, and share the code
+- Modify and create derivatives  
+- Distribute your modifications
+
+**Under these terms:**
+- Disclose source code changes
+- License derivatives under GPLv3
+- Preserve copyright notices
+
+## 🌟 Why Uturu OS?
+
+Unlike modern operating systems with millions of lines of code, Uturu OS demonstrates that powerful concepts can be implemented with elegant simplicity. It's the perfect codebase for:
+
+- **Students** learning operating system fundamentals
+- **Developers** curious about x86 architecture
+- **Hobbyists** interested in retro computing
+- **Educators** teaching low-level programming
