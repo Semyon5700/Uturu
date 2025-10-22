@@ -1,6 +1,6 @@
 # Uturu OS
 
-**A minimalist 16-bit x86 operating system from scratch**
+A minimalist 16-bit x86 operating system written in assembly.
 ## 🚀 Overview
 
 Uturu OS is a completely from-scratch 16-bit operating system written entirely in x86 assembly language. Born from curiosity and passion for low-level programming, this project demonstrates how operating systems work at the most fundamental level.
