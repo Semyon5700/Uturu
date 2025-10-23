@@ -20,6 +20,39 @@ Uturu OS is a completely from-scratch 16-bit operating system written entirely i
 - 💾 **Memory Management** - System memory detection and reporting
 - 🎮 **Basic Graphics** - VGA mode demonstrations and games
 - 🔧 **System Control** - Reboot and shutdown capabilities
+- Building from Linux
+
+Requirements:
+
+    NASM assembler
+
+    GNU coreutils (dd)
+
+    QEMU for emulation
+
+Compilation:
+bash
+
+nasm -f bin boot.asm -o boot.bin
+nasm -f bin kernel.asm -o kernel.bin
+
+Create disk image:
+bash
+
+dd if=/dev/zero of=os.img bs=512 count=2880
+dd if=boot.bin of=os.img conv=notrunc
+dd if=kernel.bin of=os.img bs=512 seek=1 conv=notrunc
+
+Run in QEMU:
+bash
+
+qemu-system-x86_64 -fda os.img
+
+Alternative for pussies using Windows:
+
+    Install WSL and follow Linux instructions
+
+    Or use whatever shitty tools work there
 
 ### Fun Extras
 - 🎯 **Minesweeper Game** - Classic puzzle game implementation
