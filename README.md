@@ -35,7 +35,7 @@ Uturu OS is a completely from-scratch 16-bit operating system written entirely i
 | `time update` | Set system time | `time update` |
 | `echo` | Print text to screen | `echo <message>` |
 | `fetch` | System information | `fetch` |
-| `cube` | 3D cube demo | `cube` |
+| `cube` | 2D cube demo | `cube` |
 | `minesweeper` | Play minesweeper | `minesweeper` |
 | `reboot` | Restart system | `reboot` |
 | `shutdown` | Power off | `shutdown` |
