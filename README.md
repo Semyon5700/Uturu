@@ -48,11 +48,7 @@ bash
 
 qemu-system-x86_64 -fda os.img
 
-Alternative for pussies using Windows:
-
-    Install WSL and follow Linux instructions
-
-    Or use whatever shitty tools work there
+Compilation on Windows is not supported
 
 ### Fun Extras
 - 🎯 **Minesweeper Game** - Classic puzzle game implementation
