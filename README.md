@@ -48,7 +48,7 @@ bash
 
 qemu-system-x86_64 -fda os.img
 
-Compilation on Windows is not supported
+Compilation on Microsoft Windows is not supported
 
 ### Fun Extras
 - 🎯 **Minesweeper Game** - Classic puzzle game implementation
