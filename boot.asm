@@ -1,3 +1,6 @@
+; ============================================
+; UTURU OS BETA 7 - BOOTLOADER
+; ============================================
 org 0x7C00
 bits 16
 
@@ -16,15 +19,19 @@ int 0x10
 mov si, loading_msg
 call print
 
-; Load kernel from disk (40 sectors = 20KB)
+; Load kernel from disk (80 sectors = 40KB)
 mov ah, 0x02
-mov al, 40        ; Number of sectors to read
+mov al, 80        ; Number of sectors to read
 mov ch, 0         ; Cylinder
 mov dh, 0         ; Head  
 mov cl, 2         ; Starting sector
 mov bx, 0x7E00    ; Load to 0x7E00 (right after bootloader)
 int 0x13
 jc error          ; Jump if disk error
+
+; Check if all sectors loaded
+cmp al, 80
+jne error
 
 ; Jump to loaded kernel
 jmp 0x7E00
@@ -45,7 +52,7 @@ error:
     call print
     jmp $
 
-loading_msg db 'Uturu OS Beta 6 Loading...', 0
+loading_msg db 'Uturu OS Beta 7 Loading...', 0
 error_msg db ' Disk Error!', 0
 
 ; Boot signature
