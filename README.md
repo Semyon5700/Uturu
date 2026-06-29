@@ -32,7 +32,7 @@ Productivity
 
     🧮 Interactive Calculator - Inline arithmetic (+, -, *, /) with session support
 
-🛠️ Building from Linux
+🛠️ Building from Gnu/Linux
 
 Requirements:
 
