@@ -1,4 +1,4 @@
-Uturu OS
+Uturu OS beta 8
 
 Описание:
 
